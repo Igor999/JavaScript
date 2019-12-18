@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html>
+
+
+<head>
+    <meta charset="utf-8"/>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <title>Документ</title>
+  </head>
+<body>
+
+
+<p>
+    My Bonnie lies over the ocean.
+
+
+   
+ My Bonnie lies over the sea.
+
+
+   
+ My Bonnie lies over the ocean.
+
+   
+ 
+   Oh, bring back my Bonnie to me.
+
+</p>
+
+
+
+
+<script>
+$('p').addClass('delete'); 
+var content=$('p').html();
+var contentArr=content.split('.');
+for (i=contentArr.length-2; i>=0; i--){
+$('body').prepend(function(){
+return '<p>'+contentArr[i]+'.'+'</p>';
+});
+}
+$('p.delete').remove();
+</script>
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+<meta charset="utf-8"/>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<title>Cars</title>
+</head>
+<body>
+
+
+<form action="">
+<select name="cars">
+
+<option value="volvo">Volvo</option>
+
+<option value="saab">Saab</option>
+
+<option value="fiat">Fiat</option>
+
+<option value="audi">Audi</option>
+
+</select>
+
+</form>
+
+
+<script>
+var car=$('script');
+car.each(function(){
+console.log($(this).html());
+}
+);
+
+var car1=$('option');
+car1.each(function(){
+console.log($(this).html());
+}
+);
+
+
+var car2=$('option');
+console.log(car2.attr('id'));
+
+var car2=$('option');
+console.log(car2.attr('value'));
+
+var car3=$('option');
+console.log(car3.css('width'));
+
+var car3=$('option');
+console.log(car3.css('height'));
+
+
+
+</script>
+</body>
+
+</html>

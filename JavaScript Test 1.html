@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+</head>
+<body>
+<script>
+
+var iter = +prompt("Количество итераций:", 12);
+document.write('<table border="1"><tr><td>x</td><td>y</td><td>test</td></tr>');
+var R = 1;
+for(var x = -R; x <= R; x += 0.1){
+	document.write('<tr><td>' + x.toFixed(4) + '</td><td>');
+	if(x != -1){
+		var y = 1;
+		var sign = 1;
+		var xp = x;
+		var d = 1;
+		for(var i = 1; i <= iter; i++){
+			var k = 1 - 0.5 / i;
+			sign = (sign == 1)? -1 : 1;
+			y += sign * d * k * xp;
+			//
+			d *= k;
+			xp *= x;
+		}
+		document.write(y.toFixed(4));
+	}else{
+		document.write("INF");
+	}
+	document.write('</td><td>' + ( 1/(Math.sqrt(1 + x)) ).toFixed(4) + '</td></tr>'); //test
+}
+/*document.write('</table>');*/
+
+</script>
+</body>
+</html>

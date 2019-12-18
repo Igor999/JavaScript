@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+</head>
+<body>
+<script>
+
+function ConstructorPublic(){ // конструктор с общедоступными свойствами
+	this.arr = [];
+	this.inputData = function(str){
+		this.arr = [];
+		for(var i in str){
+			this.arr.push(str[i]);
+		}
+	}
+	this.outputData = function(){
+		console.log(this);
+		console.log(this.arr);
+		console.log('Длина: ' + this.arr.length + ' символов');
+	}
+	this.addSymbol = function(s, num){ // s = символ, num = позиция
+		if(num < 0 || num > this.arr.length){
+			alert('Невозможно выполнить операцию');
+			return;
+		}
+		if(num == this.arr.length){
+			this.arr.push(s);
+		}else{
+			var new_arr = [];
+			for(var i in this.arr){
+				if(i == num){
+					new_arr.push(s);
+				}
+				new_arr.push(this.arr[i]);
+			}
+			this.arr = new_arr;
+		}
+	}
+	this.removeSymbol = function(num){
+		if(num < 0 || num > this.arr.length){
+			alert('Невозможно выполнить операцию');
+			return;
+		}
+		var new_arr = [];
+		for(var i in this.arr){
+			if(i != num){
+				new_arr.push(this.arr[i]);
+			}
+		}
+		this.arr = new_arr;
+	}
+}
+
+function ConstructorPrivate(){ // конструктор с приватными свойствами
+	var arr = [];
+	this.inputData = function(str){
+		arr = [];
+		for(var i in str){
+			arr.push(str[i]);
+		}
+	}
+	this.outputData = function(){
+		console.log(this);
+		console.log(arr);
+		console.log('Длина: ' + arr.length + ' символов');
+	}
+	this.addSymbol = function(s, num){ // s = символ, num = позиция
+		if(num < 0 || num > arr.length){
+			alert('Невозможно выполнить операцию');
+			return;
+		}
+		if(num == arr.length){
+			arr.push(s);
+		}else{
+			var new_arr = [];
+			for(var i in arr){
+				if(i == num){
+					new_arr.push(s);
+				}
+				new_arr.push(arr[i]);
+			}
+			arr = new_arr;
+		}
+	}
+	this.removeSymbol = function(num){
+		if(num < 0 || num > arr.length){
+			alert('Невозможно выполнить операцию');
+			return;
+		}
+		var new_arr = [];
+		for(var i in arr){
+			if(i != num){
+				new_arr.push(arr[i]);
+			}
+		}
+		arr = new_arr;
+	}
+	this.returnLength = function(){
+		return arr.length;
+	}
+}
+/////////////////////////////////////////////
+var str = "";
+while(true){
+	str = prompt('Введите любую строку:');
+	if(str != "") break;
+	alert('Строка пуста');
+}
+
+//var OBJ = new ConstructorPublic();
+var OBJ = new ConstructorPrivate();
+OBJ.inputData(str);
+OBJ.outputData();
+var s = prompt('Добавить символ:');
+//var num = +prompt('В позицию (0-' + OBJ.arr.length + '):', 0);
+var num = +prompt('В позицию (0-' + OBJ.returnLength() + '):', 0);
+OBJ.addSymbol(s, num);
+OBJ.outputData();
+//var num = +prompt('Убрать символ из позиции (0-' + OBJ.arr.length + '):', 0);
+var num = +prompt('Убрать символ из позиции (0-' + OBJ.returnLength() + '):', 0);
+OBJ.removeSymbol(num);
+OBJ.outputData();
+
+</script>
+</body>
+</html>
